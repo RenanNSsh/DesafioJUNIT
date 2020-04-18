@@ -1,13 +1,18 @@
 Nome: Renan do Nascimento Sanches
 RM: 81500
 
-1º PASSO) Criação da classe JUNIT Teste
+1º PASSO) Criação do repositório
+
+
+
+
+2º PASSO) Criação da classe JUNIT Teste
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TesteJulgamentoPrisioneiro {
+class JulgamentoPrisioneiroTest{
 
 	@Test
 	void test() {
@@ -15,3 +20,13 @@ class TesteJulgamentoPrisioneiro {
 	}
 
 }
+
+
+
+
+3º PASSO) Ocorreram erros de compilação pois não foi encontrado o enum Resposta, com o seguinte log: 
+"The method calculaPena(Resposta, Resposta) from the type JulgamentoPrisioneiro refers to the missing type Resposta" 
+
+
+
+
