@@ -27,6 +27,10 @@ class JulgamentoPrisioneiroTest{
 3º PASSO) Ocorreram erros de compilação pois não foi encontrado o enum Resposta, com o seguinte log: 
 "The method calculaPena(Resposta, Resposta) from the type JulgamentoPrisioneiro refers to the missing type Resposta" 
 
-
+4º PASSO) então criei o seguinte enum:
+ 
+public enum Resposta {
+	DELACAO
+}
 
 
