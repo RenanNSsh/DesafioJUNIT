@@ -33,7 +33,90 @@ public enum Resposta {
 	DELACAO
 }
 
-5º Passo ocorreram erros nos testes de inocencia e condenacao cumplices.
+
+5º PASSO) Implementação dos métodos de testes e correções dos testes. Classe final:
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+
+class JulgamentoPrisioneiroTest {
+   private final int PENA_INOCENCIA = 10;
+   private final int PENA_CONDENACAO_MUTUA = 15;
+   private final int PENA_CONDENACAO_INDIVIDUAL = 10;
+   private final int PENA_CONDENACAO_CUMPLICES = 11;
+
+	@Test
+	void deveTerPenaCondenacaoMutua() {
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		Resposta respostaPrisioneiroA = Resposta.DELACAO;
+		Resposta respostaPrisioneiroB = Resposta.DELACAO;
+		int pena = jp.calculaPena(respostaPrisioneiroA, respostaPrisioneiroB);
+		Assert.assertEquals(pena, PENA_CONDENACAO_MUTUA);
+	}
+
+
+	@Test
+	void deveTerPenaInocencia() {
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		Resposta respostaPrisioneiroA = Resposta.INOCENTE;
+		Resposta respostaPrisioneiroB = Resposta.INOCENTE;
+		int pena = jp.calculaPena(respostaPrisioneiroA, respostaPrisioneiroB);
+		Assert.assertEquals(pena, PENA_INOCENCIA);
+	}
+	
+
+	@Test
+	void deveTerPenaCondenacaoIndividual() {
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		Resposta respostaPrisioneiroA = Resposta.DELACAO;
+		Resposta respostaPrisioneiroB = Resposta.INOCENTE;
+		int pena = jp.calculaPena(respostaPrisioneiroA, respostaPrisioneiroB);
+		Assert.assertEquals(pena, PENA_CONDENACAO_INDIVIDUAL);
+	}
+	
+
+	@Test
+	void deveTerPenaCondenacaoCumplices() {
+		JulgamentoPrisioneiro jp = new JulgamentoPrisioneiro();
+		Resposta respostaPrisioneiroA = Resposta.INOCENTE;
+		Resposta respostaPrisioneiroB = Resposta.DELACAO;
+		int pena = jp.calculaPena(respostaPrisioneiroA, respostaPrisioneiroB);
+		Assert.assertEquals(pena, PENA_CONDENACAO_CUMPLICES);
+	}
+	
+	
+	
+}
+
+
+Versão JUNIT: 5.
+Versão da classe de objetos corrigida:
+
+public class JulgamentoPrisioneiro {
+   private int PENA_INOCENCIA = 10;
+   private int PENA_CONDENACAO_MUTUA = 15;
+   private int PENA_CONDENACAO_INDIVIDUAL = 10;
+   private int PENA_CONDENACAO_CUMPLICES = 11;
+
+   public int calculaPena(Resposta respostaPrisioneiroA, Resposta respostaPrisioneiroB) {
+      if (respostaPrisioneiroA == Resposta.DELACAO) {
+          if (respostaPrisioneiroB == Resposta.DELACAO) {
+            return PENA_CONDENACAO_MUTUA;
+          } else {
+                 return PENA_CONDENACAO_INDIVIDUAL;
+                 }
+       } else {
+                if (respostaPrisioneiroB == Resposta.DELACAO) {
+                    return PENA_CONDENACAO_CUMPLICES;
+                } else {
+                         return PENA_INOCENCIA;
+                        }
+                }
+     }
+}
+
 
 
 
