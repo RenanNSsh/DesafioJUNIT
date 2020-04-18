@@ -1,0 +1,17 @@
+Nome: Renan do Nascimento Sanches
+RM: 81500
+
+1º PASSO) Criação da classe JUNIT Teste
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TesteJulgamentoPrisioneiro {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}
